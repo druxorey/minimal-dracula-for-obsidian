@@ -1,7 +1,7 @@
 /* ==
 @name             Minimal Dracula
 @namespace        github.com/druxorey/minimal-dracula-for-obsidian
-@version          1.4.0
+@version          1.4.1
 @description      Are you tired of the same boring colors on Obsidian? Then try this modern color style based on the Dracula theme
 @author           Druxorey
 @license          GNU General Public License v3.0
@@ -184,6 +184,11 @@ body.theme-dark {
 	background: var(--color-background-3);
 }
 
+/* Fixes the title bar color issue in dark mode */
+.theme-dark .titlebar-button {
+	background-color: var(--color-background-5);
+}
+
 /* Sets markdown links to cyan color */
 .theme-dark .markdown-source-view .cm-string.cm-url {
 	color: var(--color-cyan-2);
@@ -275,6 +280,11 @@ body.theme-light {
 /* Background color for markdown table headers */
 .theme-light .markdown-rendered thead tr {
 	background: var(--color-background-3);
+}
+
+/* Fixes the title bar color issue in light mode */
+.theme-light .workspace-tab-header-container, .titlebar-button {
+	background-color: var(--color-background-3);
 }
 
 /* Sets markdown links to blue color */
