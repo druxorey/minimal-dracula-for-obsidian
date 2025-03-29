@@ -1,7 +1,7 @@
 /* ==
 @name             Minimal Dracula
 @namespace        github.com/druxorey/minimal-dracula-for-obsidian
-@version          1.4.1
+@version          1.4.2
 @description      Are you tired of the same boring colors on Obsidian? Then try this modern color style based on the Dracula theme
 @author           Druxorey
 @license          GNU General Public License v3.0
@@ -329,6 +329,8 @@ body.theme-light {
 /* Sets the width of the writing panel to match a document's width */
 .workspace-split.mod-vertical.mod-root .workspace-tab-container {
 	margin: 20px auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	width: calc(100% - 2vw);
 	max-width: 1000px;
 }
