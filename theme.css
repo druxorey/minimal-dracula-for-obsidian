@@ -1,7 +1,7 @@
 /* ==
 @name             Minimal Dracula
 @namespace        github.com/druxorey/minimal-dracula-for-obsidian
-@version          1.4.2
+@version          1.5.0
 @description      Are you tired of the same boring colors on Obsidian? Then try this modern color style based on the Dracula theme
 @author           Druxorey
 @license          GNU General Public License v3.0
@@ -116,17 +116,17 @@ body {
 body.theme-dark {
 	--color-background-1: #525568;
 	--color-background-2: #44475A;
-	--color-background-3: #353747;
+	--color-background-3: #2F313F;
 	--color-background-4: #282A36;
-	--color-background-5: #21222C;
-
-	--color-shadow-1: #353747;
-	--color-shadow-2: #21222C;
-	--color-shadow-3: #1A1C24;
+	--color-background-5: #1E1F29;
 
 	--color-foreground-1: #F8F8F2;
-	--color-foreground-2: #D9DADF;
-	--color-foreground-3: #B9BBCB;
+	--color-foreground-2: #9e9fa6;
+	--color-foreground-3: #5a5d6d;
+
+	--color-shadow-1: #2F313F;
+	--color-shadow-2: #1E1F29;
+	--color-shadow-3: #1A1B23;
 
 	color: var(--color-foreground-1);
 	
@@ -142,8 +142,8 @@ body.theme-dark {
 	--color-base-40: var(--color-background-2);
 	--color-base-50: var(--color-background-1);
 	--color-base-60: blue;
-	--color-base-70: var(--color-foreground-3);
-	--color-base-100: var(--color-foreground-2);
+	--color-base-70: var(--color-foreground-2);
+	--color-base-100: var(--color-foreground-1);
 
 	--hr-color: var(--color-background-1);
 	--nav-item-background-active: var(--color-accent);
@@ -210,30 +210,30 @@ body.theme-dark {
 /* ============================ LIGHT THEME ========================== */
 
 body.theme-light {
-	--color-background-1: #F3F4F6;
-	--color-background-2: #E8E8EE;
-	--color-background-3: #DCDDE5;
-	--color-background-4: #D0D2DC;
-	--color-background-5: #C4C7D4;
+	--color-background-1: #F4F4F6;
+	--color-background-2: #DDDDE3;
+	--color-background-3: #C7C8D1;
+	--color-background-4: #A5A7B6;
+	--color-background-5: #8F91A3;
 
 	--color-foreground-1: #44475A;
-	--color-foreground-2: #353747;
-	--color-foreground-3: #282A36;
+	--color-foreground-2: #7E808E;
+	--color-foreground-3: #B9BAC2;
 
-	--color-shadow-1: #DCDDE5;
-	--color-shadow-2: #C4C7D4;
-	--color-shadow-3: #B2B5C2;
+	--color-shadow-1: #DDDDE3;
+	--color-shadow-2: #A5A7B6;
+	--color-shadow-3: #8F91A3;
 
 	color: var(--color-foreground-1);
 	
 	--bold-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	--text-selection: hsla(var(--accent-h), var(--accent-s), 70%, 0.25);
 
-	--color-base-00: var(--color-background-3);
+	--color-base-00: var(--color-background-2);
 	--color-base-10: var(--color-background-2);
-	--color-base-20: var(--color-background-3);
+	--color-base-20: var(--color-background-2);
 	--color-base-25: blue;
-	--color-base-30: var(--color-background-3);
+	--color-base-30: var(--color-background-2);
 	--color-base-35: var(--color-background-5);
 	--color-base-40: var(--color-background-5);
 	--color-base-50: var(--color-foreground-1);
@@ -241,12 +241,12 @@ body.theme-light {
 	--color-base-70: var(--color-foreground-1);
 	--color-base-80: blue;
 	--color-base-90: blue;
-	--color-base-100: var(--color-foreground-3);
+	--color-base-100: var(--color-foreground-1);
 
 	--hr-color: var(--color-background-3);
 	--nav-item-background-active: var(--color-accent);
 	--ribbon-background: var(--color-background-2);
-	--status-bar-background: var(--color-background-4);
+	--status-bar-background: var(--color-background-3);
 	--table-header-background: var(--color-background-3);
 	--titlebar-background: var(--color-background-3);
 }
@@ -269,7 +269,7 @@ body.theme-light {
 
 /* Background color for navigation headers */
 .theme-light .nav-header {
-	background-color: var(--color-background-3);
+	background-color: var(--color-background-2);
 }
 
 /* Background color for the panel where text is written */
@@ -284,7 +284,7 @@ body.theme-light {
 
 /* Fixes the title bar color issue in light mode */
 .theme-light .workspace-tab-header-container, .titlebar-button {
-	background-color: var(--color-background-3);
+	background-color: var(--color-background-2);
 }
 
 /* Sets markdown links to blue color */
@@ -303,7 +303,7 @@ body.theme-light {
 .theme-light input[type='email'],
 .theme-light input[type='password'],
 .theme-light input[type='number'] {
-	background-color: var(--color-background-3);
+	background-color: var(--color-background-2);
 }
 
 /* ========================== GENERAL STYLING ======================== */
