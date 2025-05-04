@@ -1,7 +1,7 @@
 /* ==
 @name             Minimal Dracula
 @namespace        github.com/druxorey/minimal-dracula-for-obsidian
-@version          1.5.0
+@version          1.5.1
 @description      Are you tired of the same boring colors on Obsidian? Then try this modern color style based on the Dracula theme
 @author           Druxorey
 @license          GNU General Public License v3.0
@@ -121,8 +121,8 @@ body.theme-dark {
 	--color-background-5: #1E1F29;
 
 	--color-foreground-1: #F8F8F2;
-	--color-foreground-2: #9e9fa6;
-	--color-foreground-3: #5a5d6d;
+	--color-foreground-2: #ADAFBC;;
+	--color-foreground-3: #5A5D6D;
 
 	--color-shadow-1: #2F313F;
 	--color-shadow-2: #1E1F29;
