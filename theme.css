@@ -1,7 +1,7 @@
 /* ==
 @name             Minimal Dracula
 @namespace        github.com/druxorey/minimal-dracula-for-obsidian
-@version          1.5.1
+@version          1.6.0
 @description      Are you tired of the same boring colors on Obsidian? Then try this modern color style based on the Dracula theme
 @author           Druxorey
 @license          GNU General Public License v3.0
@@ -37,21 +37,19 @@
 	--color-pink-2: #FF79C6;
 	--color-pink-3: #E660AD;
 
-	--color-callout-comment: 98, 114, 164;
-	--color-callout-red: 255, 85, 85;
-	--color-callout-orange: 255, 184, 108;
-	--color-callout-yellow: 241, 250, 140;
-	--color-callout-green: 80, 250, 123;
-	--color-callout-cyan: 139, 233, 253;
-	--color-callout-purple: 189, 147, 249;
-	--color-callout-pink: 255, 121, 198;
+	--drx-border-radius: 10px;
+	--drx-border-width: 2px;
+	--drx-border-color: var(--color-background-3);
+
+	--drx-shadow-radius: 4px;
+
 }
 
 /* ========================== OBSIDIAN VALUES ======================== */
 
 body {
 	--color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-	--color-accent-highlight: hsl(var(--accent-h), calc(var(--accent-s) - 20%), calc(var(--accent-l) + 10%));
+	--color-highlight: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.25);
 
 	--h1-weight: 600;
 	--h2-weight: 600;
@@ -87,13 +85,24 @@ body {
 	--tag-color: var(--color-accent);
 
 	--link-color: var(--color-accent);
-	--link-color-hover: var(--color-accent-highlight);
+	--link-color-hover: var(--color-highlight);
 	--link-external-color: var(--color-accent);
-	--link-external-color-hover: var(--color-accent-highlight);
+	--link-external-color-hover: var(--color-highlight);
 	--link-unresolved-color: var(--color-green-2);
 	--link-unresolved-decoration-color: var(--color-red-2);
-	--link-unresolved-opacity: 0.5;
 	--checklist-done-decoration: none;
+
+	--link-unresolved-opacity: 0.5;
+	--table-width: 88cqw;
+
+	--color-callout-comment: 98, 114, 164;
+	--color-callout-red: 255, 85, 85;
+	--color-callout-orange: 255, 184, 108;
+	--color-callout-yellow: 241, 250, 140;
+	--color-callout-green: 55, 235, 98;
+	--color-callout-cyan: 114, 208, 228;
+	--color-callout-purple: 189, 147, 249;
+	--color-callout-pink: 255, 121, 198;
 
 	--callout-default: var(--color-callout-comment);
 	--callout-info: var(--color-callout-comment);
@@ -106,7 +115,7 @@ body {
 	--callout-example: var(--color-callout-pink);
 	--callout-important: var(--color-callout-purple);
 	--callout-success: var(--color-callout-green);
-	--callout-question: var(--color-callout-yellow);
+	--callout-question: var(--color-callout-orange);
 	--callout-warning: var(--color-callout-orange);
 	--callout-quote: var(--color-callout-purple);
 }
@@ -128,13 +137,15 @@ body.theme-dark {
 	--color-shadow-2: #1E1F29;
 	--color-shadow-3: #1A1B23;
 
+	--color-border: var(--color-background-2);
+
 	color: var(--color-foreground-1);
 	
-	--bold-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-	--text-selection: hsla(var(--accent-h), var(--accent-s), 70%, 0.25);
+	--bold-color: var(--color-accent);
+	--text-selection: var(--color-highlight);
 
 	--color-base-00: var(--color-background-5);
-	--color-base-10: var(--color-background-3);
+	--color-base-10: var(--color-background-5);
 	--color-base-20: var(--color-background-5);
 	--color-base-25: var(--color-background-5);
 	--color-base-30: var(--color-background-5);
@@ -145,12 +156,14 @@ body.theme-dark {
 	--color-base-70: var(--color-foreground-2);
 	--color-base-100: var(--color-foreground-1);
 
-	--hr-color: var(--color-background-1);
-	--nav-item-background-active: var(--color-accent);
+	--code-normal: var(--color-foreground-2);
+	--hr-color: var(--color-background-2);
+	--nav-item-background-active: var(--color-highlight);
 	--ribbon-background: var(--color-background-4);
 	--status-bar-background: var(--color-background-4);
 	--table-header-background: var(--color-background-3);
 	--titlebar-background: var(--color-background-5);
+
 }
 
 body.theme-dark.is-mobile {
@@ -159,27 +172,50 @@ body.theme-dark.is-mobile {
 	--color-base-20: var(--color-background-3);
 }
 
-/* Background color of the application */
+/* General application background */
 body.theme-dark {
 	background-color: var(--color-background-5);
 }
 
-/* Sets a different background color for all panels */
+/* Borders for general UI elements like tabs, modals, and prompts */
+.theme-dark .workspace-tab-container, .theme-dark .modal-container.mod-dim .modal, .theme-dark .prompt {
+	border-color: var(--color-border);
+}
+
+/* Borders for inline code and code blocks */
+.theme-dark .cm-s-obsidian span.cm-inline-code, .theme-dark code {
+	border-color: var(--color-border) !important;
+}
+
+/* Vault selection panel */
+.theme-dark .workspace-sidedock-vault-profile {
+	background-color: var(--color-background-4) !important;
+	border-color: var(--color-border) !important;
+}
+
+/* Workspace panels */
 .theme-dark .workspace-leaf-content {
 	background-color: var(--color-background-4);
 }
 
-/* Background color for navigation headers */
-.theme-dark .nav-header {
-	background-color: var(--color-background-5);
+/* Styling for the status bar */
+.theme-dark .status-bar {
+	background-color: var(--color-background-4);
+	border-color: var(--color-border) !important;
 }
 
-/* Background color for the panel where text is written */
+/* Navigation headers */
+.theme-dark .nav-header {
+	background-color: var(--color-background-5);
+	border-color: var(--color-border) !important;
+}
+
+/* Main text editing panel */
 .theme-dark .workspace-split.mod-root .view-content {
 	background-color: var(--color-background-4);
 }
 
-/* Background color for markdown table headers */
+/* Markdown table headers */
 .theme-dark .markdown-rendered thead tr {
 	background: var(--color-background-3);
 }
@@ -211,40 +247,43 @@ body.theme-dark {
 
 body.theme-light {
 	--color-background-1: #F4F4F6;
-	--color-background-2: #DDDDE3;
-	--color-background-3: #C7C8D1;
-	--color-background-4: #A5A7B6;
-	--color-background-5: #8F91A3;
+	--color-background-2: #E9E9ED;
+	--color-background-3: #DDDDE3;
+	--color-background-4: #C7C8D1;
+	--color-background-5: #A5A7B6;
 
 	--color-foreground-1: #44475A;
 	--color-foreground-2: #7E808E;
 	--color-foreground-3: #B9BAC2;
 
-	--color-shadow-1: #DDDDE3;
+	--color-shadow-3: #DDDDE3;
 	--color-shadow-2: #A5A7B6;
-	--color-shadow-3: #8F91A3;
+	--color-shadow-1: #8F91A3;
+
+	--color-border: var(--color-background-4);
 
 	color: var(--color-foreground-1);
 	
-	--bold-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-	--text-selection: hsla(var(--accent-h), var(--accent-s), 70%, 0.25);
+	--bold-color: var(--color-accent);
+	--text-selection: var(--color-highlight);
 
-	--color-base-00: var(--color-background-2);
-	--color-base-10: var(--color-background-2);
-	--color-base-20: var(--color-background-2);
+	--color-base-00: var(--color-background-3);
+	--color-base-10: var(--color-background-3);
+	--color-base-20: var(--color-background-3);
 	--color-base-25: blue;
-	--color-base-30: var(--color-background-2);
+	--color-base-30: var(--color-background-3);
 	--color-base-35: var(--color-background-5);
 	--color-base-40: var(--color-background-5);
-	--color-base-50: var(--color-foreground-1);
+	--color-base-50: var(--color-foreground-2);
 	--color-base-60: green;
-	--color-base-70: var(--color-foreground-1);
+	--color-base-70: var(--color-foreground-2);
 	--color-base-80: blue;
 	--color-base-90: blue;
 	--color-base-100: var(--color-foreground-1);
 
+	--code-normal: var(--color-foreground-2);
 	--hr-color: var(--color-background-3);
-	--nav-item-background-active: var(--color-accent);
+	--nav-item-background-active: var(--color-highlight);
 	--ribbon-background: var(--color-background-2);
 	--status-bar-background: var(--color-background-3);
 	--table-header-background: var(--color-background-3);
@@ -257,19 +296,42 @@ body.theme-light.is-mobile {
 	--color-base-20: var(--color-background-3);
 }
 
-/* Background color of the application */
+/* General application background */
 body.theme-light {
 	background-color: var(--color-background-3);
 }
 
-/* Sets a different background color for all panels */
+/* Borders for general UI elements like tabs, modals, and prompts */
+.theme-light .workspace-tab-container, .theme-light .modal-container.mod-dim .modal, .theme-light .prompt {
+	border-color: var(--color-border) !important;
+}
+
+/* Borders for inline code and code blocks */
+.theme-light .cm-s-obsidian span.cm-inline-code, .theme-dark code {
+	border-color: var(--color-border) !important;
+}
+
+/* Vault selection panel */
+.theme-light .workspace-sidedock-vault-profile {
+	background-color: var(--color-background-1) !important;
+	border-color: var(--color-border) !important;
+}
+
+/* Workspace panels */
 .theme-light .workspace-leaf-content {
 	background-color: var(--color-background-1);
 }
 
-/* Background color for navigation headers */
+/* Styling for the status bar */
+.theme-light .status-bar {
+	background-color: var(--color-background-1);
+	border-color: var(--color-border) !important;
+}
+
+/* Navigation headers */
 .theme-light .nav-header {
-	background-color: var(--color-background-2);
+	background-color: var(--color-background-3);
+	border-color: var(--color-border) !important;
 }
 
 /* Background color for the panel where text is written */
@@ -284,7 +346,7 @@ body.theme-light {
 
 /* Fixes the title bar color issue in light mode */
 .theme-light .workspace-tab-header-container, .titlebar-button {
-	background-color: var(--color-background-2);
+	background-color: var(--color-background-3);
 }
 
 /* Sets markdown links to blue color */
@@ -308,11 +370,37 @@ body.theme-light {
 
 /* ========================== GENERAL STYLING ======================== */
 
+a {
+	color: var(--color-accent) !important;
+}
+
 /* Rounds the corners of all panels */
-.workspace-tab-container {
+.workspace-tab-container, .prompt {
 	margin: 10px;
-	border-radius: 10px;
-	box-shadow: 0 0 10px var(--color-shadow-3);
+	border-radius: var(--drx-border-radius);
+	border: var(--drx-border-width) solid;
+	box-shadow: 0 0 var(--drx-shadow-radius) var(--color-shadow-3);
+}
+
+/* Styles inline code blocks in markdown (text between ``) */
+.cm-s-obsidian span.cm-inline-code  {
+	color: var(--color-foreground-2);
+}
+
+/* Styles the vault selection area at the bottom-right */
+.workspace-sidedock-vault-profile {
+	width: 94% !important;
+	margin: 10px;
+	border-radius: var(--drx-border-radius);
+	border: var(--drx-border-width) solid !important;
+	box-shadow: 0 0 var(--drx-shadow-radius) var(--color-shadow-3);
+}
+
+/* Styles the status bar at the bottom-right */
+.status-bar {
+	border-radius: var(--drx-border-radius) 0px 0px 0px;
+	border: var(--drx-border-width) solid;
+	box-shadow: 0 0 var(--drx-shadow-radius) var(--color-shadow-3);
 }
 
 /* Prevents layout issues when the writing panel is too small */
@@ -323,16 +411,20 @@ body.theme-light {
 /* Adds rounded corners to navigation headers */
 .nav-header {
 	margin: 10px;
-	border-radius: 10px;
+	border-radius: var(--drx-border-radius);
+	border: var(--drx-border-width) solid;
 }
 
-/* Sets the width of the writing panel to match a document's width */
-.workspace-split.mod-vertical.mod-root .workspace-tab-container {
-	margin: 20px auto;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	width: calc(100% - 2vw);
-	max-width: 1000px;
+/* Styles the settings modal */
+.modal-container.mod-dim .modal {
+	border-radius: var(--drx-border-radius);
+	border: var(--drx-border-width) solid;
+	box-shadow: 0 0 var(--drx-shadow-radius) var(--color-shadow-3);
+}
+
+/* Background color for the settings modal */
+.modal-bg {
+	background-color: var(--color-highlight);
 }
 
 /* Justifies text in reading mode */
@@ -346,11 +438,6 @@ body:not(.is-mobile) .workspace {
 	position: relative;
 	overflow: visible;
 	padding: 8px;
-}
-
-/* Prevents table size issues when content is too large */
-body {
-	--table-width: 88cqw;
 }
 
 body:not(.table-width-obsidian-default) .markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper,
@@ -400,11 +487,115 @@ body:not(.table-width-obsidian-default) :is(.markdown-rendered, .markdown-source
 	}
 }
 
+/* ============================ CALL OUTS ============================ */
+
+.theme-light .cm-callout {
+	border-radius: var(--drx-border-radius);
+	border: var(--drx-border-width) solid !important;
+	border-color: var(--color-border) !important;
+	box-shadow: 0 0 calc(var(--drx-shadow-radius) * 2) var(--color-shadow-3);
+}
+
+.theme-light .callout-title {
+    gap: 10px;
+	padding: 1rem;
+}
+
+.theme-light .callout {
+	padding: 0px
+}
+
+.theme-light .callout-content {
+	background: var(--color-background-2) !important;
+	padding: 1rem;
+}
+
+.theme-light .cm-callout:hover {
+	border-radius: var(--drx-border-radius) !important;
+	border-color: var(--color-background-5) !important;
+}
+
+.theme-light .callout {
+	background: #6272A43F !important;
+}
+
+.theme-light .callout[data-callout="example"] {
+	background: #FF79C63F !important;
+}
+
+.theme-light .callout[data-callout="summary"] {
+	background: #8BE9FD3F !important;
+}
+
+.theme-light .callout[data-callout="tip"] {
+	background: #8BE9FD3F !important;
+}
+
+.theme-light .callout[data-callout="bug"] {
+	background: #FF55553F !important;
+}
+
+.theme-light .callout[data-callout="error"] {
+	background: #FF55553F !important;
+}
+
+.theme-light .callout[data-callout="fail"] {
+	background: #FF55553F !important;
+}
+
+.theme-light .callout[data-callout="important"] {
+	background: #BD93F93F !important;
+}
+
+.theme-light .callout[data-callout="quote"] {
+	background: #BD93F93F !important;
+}
+
+.theme-light .callout[data-callout="success"] {
+	background: #50FA7B3F !important;
+}
+
+.theme-light .callout[data-callout="question"] {
+	background: #FFB86C3F !important;
+}
+
+.theme-light .callout[data-callout="warning"] {
+	background: #FFB86C3F !important;
+}
+
+/* ============================ PRINTING ============================= */
+
 @media print {
-	/* Adjusts styles for printing in light mode */
-	.theme-light {
-		--blockquote-background-color: red;
-		--code-background: var(--color-background-2);
-		--table-header-background: blue;
+
+	.internal-embed{
+		margin-left:-30px;
+	}
+
+	body.theme-light {
+		--color-base-10: #E9E9ED;
+		--color-base-20: #F4F4F6;
+	}
+
+	h2, h3, h4, h5, h6 {
+		page-break-after: avoid;
+	}
+
+	pre, blockquote {
+		page-break-inside: avoid;
+	}
+
+	.callout {
+		page-break-inside: avoid;
+	}
+
+	.theme-light .cm-callout {
+		border-radius: 10px !important;
+		border: 2px solid !important;
+		border-color: #C7C8D1 !important;
+		box-shadow: 0 0 8px #DDDDE3 !important;
+	}
+
+	.theme-light .callout-content {
+		background: #F4F4F6 !important;
 	}
 }
