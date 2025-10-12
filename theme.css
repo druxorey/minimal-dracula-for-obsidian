@@ -1,7 +1,7 @@
 /* ==
 @name             Minimal Dracula
 @namespace        github.com/druxorey/minimal-dracula-for-obsidian
-@version          1.7.0
+@version          1.7.1
 @description      Are you tired of the same boring colors on Obsidian? Then try this modern color style based on the Dracula theme
 @author           Druxorey
 @license          GNU General Public License v3.0
@@ -218,10 +218,10 @@ body.theme-dark {
 /* ============================ LIGHT THEME ========================== */
 
 body.theme-light {
-    --drx-color-base: #dce0e8;
-    --drx-color-surface: #e6e9ef;
-    --drx-color-overlay: #eff1f5;
-    --drx-color-highlight: #fcfcfd;
+	--drx-color-base: #dce0e8;
+	--drx-color-surface: #eff1f5;
+	--drx-color-overlay: #ccd0da;
+	--drx-color-highlight: #bcc0cc;
 
     --drx-color-text: #4C4F69;
     --drx-color-subtext: #5C5F77;
@@ -262,11 +262,11 @@ body.theme-light {
 	--bold-color: var(--drx-color-accent);
 	--text-selection: var(--drx-color-overlay);
 
-	--color-base-00: var(--drx-color-surface);
-	--color-base-10: var(--drx-color-overlay);
-	--color-base-20: var(--drx-color-surface);
-	--color-base-25: var(--drx-color-surface);
-	--color-base-30: var(--drx-color-surface);
+	--color-base-00: var(--drx-color-base);
+	--color-base-10: var(--drx-color-base);
+	--color-base-20: var(--drx-color-base);
+	--color-base-25: var(--drx-color-base);
+	--color-base-30: var(--drx-color-base);
 	--color-base-35: var(--drx-color-overlay);
 	--color-base-40: var(--drx-color-overlay);
 	--color-base-50: var(--drx-color-deactivate);
@@ -304,42 +304,42 @@ body.theme-light {
 
 /* General application background */
 body.theme-light {
-	background-color: var(--drx-color-surface);
+	background-color: var(--drx-color-base);
 }
 
 /* Vault selection panel */
 .theme-light .workspace-sidedock-vault-profile {
-	background-color: var(--drx-color-highlight) !important;
+	background-color: var(--drx-color-surface) !important;
 }
 
 /* Workspace panels */
 .theme-light .workspace-leaf-content {
-	background-color: var(--drx-color-highlight);
+	background-color: var(--drx-color-surface);
 }
 
 /* Styling for the status bar */
 .theme-light .status-bar {
-	background-color: var(--drx-color-highlight);
+	background-color: var(--drx-color-surface);
 }
 
 /* Navigation headers */
 .theme-light .nav-header {
+	background-color: var(--drx-color-base);
+}
+
+/* Main text editing panel */
+.theme-light .workspace-split.mod-root .view-content {
 	background-color: var(--drx-color-surface);
 }
 
-/* Background color for the panel where text is written */
-.theme-light .workspace-split.mod-root .view-content {
-	background-color: var(--drx-color-highlight);
-}
-
-/* Background color for markdown table headers */
+/* Markdown table body */
 .theme-light .markdown-rendered thead tr {
 	background-color: var(--drx-color-surface);
 }
 
 /* Fixes the title bar color issue in light mode */
 .theme-light .workspace-tab-header-container, .titlebar-button {
-	background-color: var(--drx-color-surface);
+	background-color: var(--drx-color-base);
 }
 
 /* Sets markdown links to blue color */
