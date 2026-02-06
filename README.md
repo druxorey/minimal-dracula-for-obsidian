@@ -3,8 +3,6 @@
 
 <p align="center">Are you tired of the same boring colors on Obsidian? Then try this theme</p>
 
-![banner](resources/banner.png)
-
 **Minimal Dracula** is an [Obsidian](https://obsidian.md/) theme, compatible with PCs, tablets, and mobile devices. Inspired by the Dracula color palette, it provides a carefully organized editing experience and caters to those who prefer the raw editing mode over live preview. The combination of gray and blue tones creates an attractive aesthetic for your notes and documents.
 
 ## Theme Installation
@@ -15,6 +13,13 @@ To install the theme
 - Open Obsidian Settings
 - Go to `Appearance` and click `Default`
 - Select `minimal-dracula-for-obsidian` from the list of themes
+
+## Overview
+
+![dracula theme](resources/banner_dark.png)
+
+![alucard theme](resources/banner_light.png)
+
 
 ## Contribute
 
