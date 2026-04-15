@@ -1,7 +1,14 @@
+![dracula theme](resources/banner.webp)
+<div align="center">
 
-<h1 align="center">Minimal Dracula</h1>
+_Are you tired of the same boring colors on Obsidian? Then try this theme_
 
-<p align="center">Are you tired of the same boring colors on Obsidian? Then try this theme</p>
+[![stars](https://img.shields.io/github/stars/druxorey/minimal-dracula-for-obsidian?color=8BE9FD&labelColor=191A21&style=for-the-badge)](https://github.com/druxorey/minimal-dracula-for-obsidian/stargazers)
+[![size](https://img.shields.io/github/repo-size/druxorey/minimal-dracula-for-obsidian?label=Size&color=50FA7B&labelColor=191A21&style=for-the-badge)](https://github.com/druxorey/minimal-dracula-for-obsidian)
+[![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fdruxorey%2Fminimal-dracula-for-obsidian&label=Views&labelColor=%23191A21&countColor=%23FFB86C)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Fdruxorey%2Fminimal-dracula-for-obsidian)
+[![license](https://img.shields.io/github/license/druxorey/minimal-dracula-for-obsidian?color=FF5555&labelColor=191A21&style=for-the-badge)](https://github.com/druxorey/minimal-dracula-for-obsidian/blob/main/LICENSE)
+
+</div>
 
 **Minimal Dracula** is an [Obsidian](https://obsidian.md/) theme, compatible with PCs, tablets, and mobile devices. Inspired by the Dracula color palette, it provides a carefully organized editing experience and caters to those who prefer the raw editing mode over live preview. The combination of gray and blue tones creates an attractive aesthetic for your notes and documents.
 
@@ -16,9 +23,9 @@ To install the theme
 
 ## Overview
 
-![dracula theme](resources/banner_dark.png)
+![dracula theme](resources/banner_dark.webp)
 
-![alucard theme](resources/banner_light.png)
+![alucard theme](resources/banner_light.webp)
 
 
 ## Contribute
