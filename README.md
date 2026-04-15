@@ -16,10 +16,9 @@ _Are you tired of the same boring colors on Obsidian? Then try this theme_
 
 To install the theme
 
-- Clone this repository in your .themes directory
 - Open Obsidian Settings
-- Go to `Appearance` and click `Default`
-- Select `minimal-dracula-for-obsidian` from the list of themes
+- Go to `Appearance` and click `Manage`
+- Under community themes search for "Minimal Dracula" and click `Use`
 
 ## Overview
 
