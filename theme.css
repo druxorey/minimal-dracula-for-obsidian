@@ -1,7 +1,7 @@
 /* ==
 @name             Minimal Dracula
 @namespace        github.com/druxorey/minimal-dracula-for-obsidian
-@version          1.8.5
+@version          1.8.6
 @description      Are you tired of the same boring colors on Obsidian? Then try this modern color style based on the Dracula theme
 @author           Druxorey
 @license          GNU General Public License v3.0
@@ -71,6 +71,16 @@ body {
 	--callout-success: var(--drx-color-callout-green);
 	--callout-question: var(--drx-color-callout-orange);
 	--callout-warning: var(--drx-color-callout-orange);
+
+	/* Properties (metadata) variables */
+	--metadata-background: var(--drx-color-base);
+	--metadata-border-width: 1px;
+	--metadata-border-radius: var(--drx-border-radius-outer);
+	--metadata-divider-color: transparent;
+	--metadata-divider-width: 0px;
+
+	/* Inline code variables */
+	--drx-inline-code-color: var(--drx-color-orange-2);
 }
 
 /* ============================ DARK THEME =========================== */
@@ -116,6 +126,9 @@ body.theme-dark {
 	--drx-color-pink-1: #FF92DF;
 	--drx-color-pink-2: #FF79C6;
 	--drx-color-pink-3: #E660AD;
+
+	--drx-button-border: rgba(255, 255, 255, 0.08);
+	--drx-button-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.25);
 
 	--bold-color: inherit;
 	--text-selection: color-mix(in srgb, var(--drx-color-accent), transparent 70%);
@@ -242,21 +255,6 @@ body.theme-dark {
 		background-color: var(--drx-color-surface) !important;
 	}
 
-	/* Fenced code block rounding */
-	.markdown-rendered pre {
-		border-radius: var(--drx-border-radius-inner) !important;
-	}
-
-	.cm-s-obsidian div.HyperMD-codeblock-begin-bg {
-		border-top-left-radius: var(--drx-border-radius-inner) !important;
-		border-top-right-radius: var(--drx-border-radius-inner) !important;
-	}
-
-	.cm-s-obsidian div.HyperMD-codeblock-end-bg {
-		border-bottom-left-radius: var(--drx-border-radius-inner) !important;
-		border-bottom-right-radius: var(--drx-border-radius-inner) !important;
-	}
-
 	/* Callouts styling */
 	.callout {
 		border-radius: var(--drx-border-radius-inner) !important;
@@ -325,6 +323,10 @@ body.theme-light {
 	--drx-color-pink-1: #BF185A;
 	--drx-color-pink-2: #A3144D;
 	--drx-color-pink-3: #82103E;
+	--drx-inline-code-bg: var(--drx-color-overlay);
+
+	--drx-button-border: rgba(0, 0, 0, 0.08);
+	--drx-button-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 -1.5px 0 rgba(0, 0, 0, 0.1);
 
 	--bold-color: inherit;
 	--text-selection: color-mix(in srgb, var(--drx-color-accent), transparent 70%);
@@ -451,17 +453,16 @@ body.theme-light {
 	/* Callouts styling */
 	.callout {
 		border-radius: var(--drx-border-radius-inner) !important;
-		border: solid 1px var(--drx-color-highlight) !important;
-		box-shadow: 0 0.25rem 0.5rem #CECCC0B6;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04) !important;
 		padding: 0px;
-		background: #6272A43F !important;
+		background-color: color-mix(in srgb, var(--drx-color-comment) 25%, transparent) !important;
 		overflow: hidden;
 		background-clip: padding-box;
 	}
 
 	.callout:hover {
 		border-radius: var(--drx-border-radius-inner) !important;
-		box-shadow: 0 0.25rem 0.5rem var(--drx-color-base) !important;
+		box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06) !important;
 	}
 
 	.callout-title {
@@ -590,9 +591,32 @@ body.theme-light {
 			color: var(--drx-color-orange-2) !important;
 		}
 	}
+	
+	/* Styles inline code blocks in markdown */
+	.cm-inline-code,
+	:not(pre)>code {
+		color: var(--drx-inline-code-color) !important;
+		font-weight: 500;
+		background-color: var(--drx-inline-code-bg) !important;
+	}
 }
 
 /* ========================== GENERAL STYLING ======================== */
+
+/* Fenced code block rounding (affects both light and dark themes) */
+.markdown-rendered pre {
+	border-radius: var(--drx-border-radius-inner) !important;
+}
+
+.cm-s-obsidian div.HyperMD-codeblock-begin-bg {
+	border-top-left-radius: var(--drx-border-radius-inner) !important;
+	border-top-right-radius: var(--drx-border-radius-inner) !important;
+}
+
+.cm-s-obsidian div.HyperMD-codeblock-end-bg {
+	border-bottom-left-radius: var(--drx-border-radius-inner) !important;
+	border-bottom-right-radius: var(--drx-border-radius-inner) !important;
+}
 
 /* General link styling */
 a {
@@ -648,11 +672,6 @@ h1[align="center"],
 	border: none !important;
 	border-top: var(--hr-thickness) solid var(--hr-color) !important;
 	opacity: 0.6;
-}
-
-/* Styles inline code blocks in markdown (text between ```) */
-.cm-s-obsidian span.cm-inline-code {
-	color: var(--drx-color-subtext);
 }
 
 /* Styles the vault selection area at the bottom-left */
@@ -724,22 +743,114 @@ body:not(.table-width-obsidian-default) :is(.markdown-rendered, .markdown-source
 	margin-left: (calc(200rem - 100%) / -2) !important;
 }
 
+/* Properties (metadata) panel styling */
+.metadata-container {
+	background-color: var(--metadata-background) !important;
+	border-radius: var(--metadata-border-radius) !important;
+	padding: 1.25rem 1.5rem !important;
+	margin-bottom: 2rem !important;
+}
+
+/* Make inner fields transparent and clean */
+.metadata-properties {
+	background: transparent !important;
+	border: none !important;
+}
+
+.metadata-container .metadata-property,
+.metadata-container .metadata-property-key,
+.metadata-container .metadata-property-value,
+.metadata-container input,
+.metadata-container textarea,
+.metadata-container select,
+.metadata-container .multi-select-container {
+	background-color: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+.metadata-property-key {
+	font-weight: 500 !important;
+	color: var(--drx-color-deactivate) !important;
+}
+
+/* "Add Property" button styling */
+.metadata-add-button {
+	background-color: color-mix(in srgb, var(--drx-color-accent) 10%, transparent) !important;
+	color: var(--drx-color-accent) !important;
+	border: 1px solid color-mix(in srgb, var(--drx-color-accent) 20%, transparent) !important;
+	border-radius: 6px !important;
+	padding: 6px 12px !important;
+	font-weight: 500 !important;
+	transition: all 0.2s ease !important;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.metadata-add-button:hover {
+	background-color: var(--drx-color-accent) !important;
+	color: var(--drx-color-base) !important;
+	border-color: var(--drx-color-accent) !important;
+}
+
+/* Rotating metadata tag pill colors */
+.metadata-container .multi-select-pill:nth-child(5n+1) {
+	background-color: color-mix(in srgb, var(--drx-color-yellow-2) 15%, transparent) !important;
+	color: var(--drx-color-yellow-2) !important;
+	border: 1px solid color-mix(in srgb, var(--drx-color-yellow-2) 30%, transparent) !important;
+}
+
+.metadata-container .multi-select-pill:nth-child(5n+2) {
+	background-color: color-mix(in srgb, var(--drx-color-pink-2) 15%, transparent) !important;
+	color: var(--drx-color-pink-2) !important;
+	border: 1px solid color-mix(in srgb, var(--drx-color-pink-2) 30%, transparent) !important;
+}
+
+.metadata-container .multi-select-pill:nth-child(5n+3) {
+	background-color: color-mix(in srgb, var(--drx-color-cyan-2) 15%, transparent) !important;
+	color: var(--drx-color-cyan-2) !important;
+	border: 1px solid color-mix(in srgb, var(--drx-color-cyan-2) 30%, transparent) !important;
+}
+
+.metadata-container .multi-select-pill:nth-child(5n+4) {
+	background-color: color-mix(in srgb, var(--drx-color-green-2) 15%, transparent) !important;
+	color: var(--drx-color-green-2) !important;
+	border: 1px solid color-mix(in srgb, var(--drx-color-green-2) 30%, transparent) !important;
+}
+
+.metadata-container .multi-select-pill:nth-child(5n+5) {
+	background-color: color-mix(in srgb, var(--drx-color-orange-2) 15%, transparent) !important;
+	color: var(--drx-color-orange-2) !important;
+	border: 1px solid color-mix(in srgb, var(--drx-color-orange-2) 30%, transparent) !important;
+}
+
 /* Dropdowns and comboboxes styling */
 button:not(.clickable-icon),
 select,
 .combobox-button,
 .dropdown {
-	box-shadow: none;
-	border-radius: var(--drx-border-radius-inner);
+	border-radius: var(--drx-border-radius-inner) !important;
+	border: 1px solid var(--drx-button-border) !important;
+	box-shadow: var(--drx-button-shadow) !important;
+	transition: all 0.2s ease !important;
 }
 
 button:not(.clickable-icon):hover {
-	background: var(--drx-color-accent);
+	background-color: var(--drx-color-accent) !important;
+	color: var(--drx-color-base) !important;
+	border-color: var(--drx-color-accent) !important;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 	cursor: pointer;
 }
 
 button.mod-cta {
-	color: var(--drx-color-text) !important;
+	background-color: var(--drx-color-accent) !important;
+	color: var(--drx-color-base) !important;
+	border-color: var(--drx-color-accent) !important;
+}
+
+button.mod-cta:hover {
+	background-color: var(--drx-color-important) !important;
+	border-color: var(--drx-color-important) !important;
 }
 
 /* Kanban plugin global fixes */
@@ -796,7 +907,11 @@ button.mod-cta {
 		margin-left: -30px;
 	}
 
-	h2, h3, h4, h5, h6 {
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
 		page-break-after: avoid;
 	}
 
