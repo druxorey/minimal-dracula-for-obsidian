@@ -1,7 +1,7 @@
 /* ==
 @name             Minimal Dracula
 @namespace        github.com/druxorey/minimal-dracula-for-obsidian
-@version          1.8.6
+@version          1.8.7
 @description      Are you tired of the same boring colors on Obsidian? Then try this modern color style based on the Dracula theme
 @author           Druxorey
 @license          GNU General Public License v3.0
@@ -78,9 +78,6 @@ body {
 	--metadata-border-radius: var(--drx-border-radius-outer);
 	--metadata-divider-color: transparent;
 	--metadata-divider-width: 0px;
-
-	/* Inline code variables */
-	--drx-inline-code-color: var(--drx-color-orange-2);
 }
 
 /* ============================ DARK THEME =========================== */
@@ -278,6 +275,11 @@ body.theme-dark {
 		font-weight: 500;
 		color: color-mix(in srgb, rgb(var(--callout-color)), white 35%) !important;
 	}
+
+	.callout[data-callout="todo"] {
+		background: var(--drx-color-red-2) !important;
+		a { color: var(--drx-color-text) !important; }
+	}
 }
 
 /* ============================ LIGHT THEME ========================== */
@@ -323,7 +325,9 @@ body.theme-light {
 	--drx-color-pink-1: #BF185A;
 	--drx-color-pink-2: #A3144D;
 	--drx-color-pink-3: #82103E;
+
 	--drx-inline-code-bg: var(--drx-color-overlay);
+	--drx-inline-code-color: var(--drx-color-orange-2);
 
 	--drx-button-border: rgba(0, 0, 0, 0.08);
 	--drx-button-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 -1.5px 0 rgba(0, 0, 0, 0.1);
@@ -481,115 +485,76 @@ body.theme-light {
 		font-weight: 500;
 	}
 
+	.callout .callout-title,
+	.callout .callout-icon .svg-icon {
+		color: white;
+		a { color: white !important; }
+	}
+
+
 	.callout[data-callout="todo"] {
 		background: var(--drx-color-red-2) !important;
 		color: white !important;
 
 		.callout-content {
-			color: var(--drx-color-text) !important;
+			padding: 0rem 1rem;
+			box-shadow: inset 0 -0.25rem 0.25rem var(--drx-color-red-3);
+			background: var(--drx-color-red-2) !important;
 		}
 
-		--bold-color: var(--drx-color-text);
-
-		a {
-			color: white !important;
+		.callout-title {
+			padding: 1rem 1rem 0rem 1rem;
 		}
+
+		a { color: white !important; }
 	}
 
 	.callout[data-callout="important"],
 	.callout[data-callout="example"] {
-		background: #A3144D4F !important;
-
-		.callout-title,
-		.callout-icon .svg-icon {
-			color: var(--drx-color-pink-2);
-		}
-
+		background: var(--drx-color-pink-2) !important;
 		--bold-color: var(--drx-color-pink-2);
-
-		a {
-			color: var(--drx-color-pink-2) !important;
-		}
+		--drx-inline-code-color: var(--drx-color-pink-2);
+		a { color: var(--drx-color-pink-2) !important; }
 	}
 
 	.callout[data-callout="summary"],
 	.callout[data-callout="tldr"],
 	.callout[data-callout="tip"] {
-		background: #036A964F !important;
-
-		.callout-title,
-		.callout-icon .svg-icon {
-			color: var(--drx-color-blue-2);
-		}
-
+		background: var(--drx-color-blue-2) !important;
 		--bold-color: var(--drx-color-blue-2);
-
-		a {
-			color: var(--drx-color-blue-2) !important;
-		}
+		--drx-inline-code-color: var(--drx-color-blue-2);
+		a { color: var(--drx-color-blue-2) !important; }
 	}
 
 	.callout[data-callout="bug"],
 	.callout[data-callout="error"],
 	.callout[data-callout="fail"] {
-		background: #A3144D4F !important;
-
-		.callout-title,
-		.callout-icon .svg-icon {
-			color: var(--drx-color-red-2);
-		}
-
+		background: var(--drx-color-red-2) !important;
 		--bold-color: var(--drx-color-red-2);
-
-		a {
-			color: var(--drx-color-red-2) !important;
-		}
+		--drx-inline-code-color: var(--drx-color-red-2);
+		a { color: var(--drx-color-red-2) !important; }
 	}
 
 	.callout[data-callout="quote"] {
-		background: #644AC94F !important;
-
-		.callout-title,
-		.callout-icon .svg-icon {
-			color: var(--drx-color-purple-2);
-		}
-
+		background: var(--drx-color-purple-2) !important;
 		--bold-color: var(--drx-color-purple-2);
-
-		a {
-			color: var(--drx-color-purple-2) !important;
-		}
+		--drx-inline-code-color: var(--drx-color-purple-2);
+		a { color: var(--drx-color-purple-2) !important; }
 	}
 
 	.callout[data-callout="success"] {
-		background: #14710A4F !important;
-
-		.callout-title,
-		.callout-icon .svg-icon {
-			color: var(--drx-color-green-2);
-		}
-
+		background: var(--drx-color-green-2) !important;
 		--bold-color: var(--drx-color-green-2);
-
-		a {
-			color: var(--drx-color-green-2) !important;
-		}
+		--drx-inline-code-color: var(--drx-color-green-2);
+		a { color: var(--drx-color-green-2) !important; }
 	}
 
 	.callout[data-callout="question"],
 	.callout[data-callout="warning"] {
-		background: #AF3A034F !important;
-
-		.callout-title,
-		.callout-icon .svg-icon {
-			color: var(--drx-color-orange-2);
-		}
-
-		--bold-color: var(--drx-color-orange-2);
-
-		a {
-			color: var(--drx-color-orange-2) !important;
-		}
+		background: var(--drx-color-yellow-2) !important;
+		--bold-color: var(--drx-color-yellow-2);
+		--drx-inline-code-color: var(--drx-color-yellow-2);
+		a { color: var(--drx-color-yellow-2) !important; }
 	}
 	
 	/* Styles inline code blocks in markdown */
@@ -899,41 +864,6 @@ button.mod-cta:hover {
 	padding-bottom: 0.25em !important;
 }
 
-/* ============================ PRINTING ============================= */
-
-@media print {
-
-	.internal-embed {
-		margin-left: -30px;
-	}
-
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		page-break-after: avoid;
-	}
-
-	pre,
-	blockquote {
-		page-break-inside: avoid;
-	}
-
-	/* Light mode callouts enforcement on print */
-	.theme-light .callout {
-		page-break-inside: avoid;
-		border-radius: 10px !important;
-		box-shadow: 0 0.25rem 0.5rem #CFCFCF66 !important;
-		border: solid 1px var(--drx-color-highlight) !important;
-	}
-
-	.theme-light .callout-content {
-		background: #FFFBEB !important;
-		box-shadow: inset 0 -0.25rem 0.25rem #CFCFCF66;
-	}
-}
-
 /* ======================== IMAGES AND MEDIA ========================= */
 
 /* Left aligned images based on alt text */
@@ -955,8 +885,7 @@ img[alt*="right"] {
 }
 
 /* Center aligned images based on alt text */
-img[alt*="center"],
-img[alt*="centre"] {
+img[alt*="center"] {
 	display: block;
 	margin-right: auto;
 	margin-left: auto;
