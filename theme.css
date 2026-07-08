@@ -1,7 +1,7 @@
 /* ==
 @name             Minimal Dracula
 @namespace        github.com/druxorey/minimal-dracula-for-obsidian
-@version          1.8.4
+@version          1.8.5
 @description      Are you tired of the same boring colors on Obsidian? Then try this modern color style based on the Dracula theme
 @author           Druxorey
 @license          GNU General Public License v3.0
@@ -11,7 +11,6 @@
 
 :root {
 	background-color: #1E1F29;
-
 	--drx-border-radius-outer: 16px;
 	--drx-border-radius-inner: 10px;
 }
@@ -24,10 +23,10 @@ body {
 	--h5-weight: 500;
 	--h6-weight: 500;
 
-	--h1-size: 1.60em;
-	--h2-size: 1.40em;
+	--h1-size: 1.80em;
+	--h2-size: 1.45em;
 	--h3-size: 1.25em;
-	--h4-size: 1.15em;
+	--h4-size: 1.12em;
 	--h5-size: 1.10em;
 	--h6-size: 1.05em;
 
@@ -42,6 +41,11 @@ body {
 
 	--link-unresolved-opacity: 0.5;
 	--table-width: 88cqw;
+
+	--line-height-normal: 1.6;
+	--heading-spacing: 1.8em;
+	--hr-thickness: 1px;
+	--p-margin-bottom: 0.8rem;
 
 	--drx-color-callout-comment:  98, 114, 164;
 	--drx-color-callout-red:     255,  85,  85;
@@ -99,7 +103,7 @@ body.theme-dark {
 	--drx-color-yellow-3: #D8E173;
 	--drx-color-green-1: #69FF94;
 	--drx-color-green-2: #50FA7B;
-	--drx-color-green-3: #37EB62; 
+	--drx-color-green-3: #37EB62;
 	--drx-color-cyan-1: #A4FFFF;
 	--drx-color-cyan-2: #8BE9FD;
 	--drx-color-cyan-3: #72D0E4;
@@ -113,7 +117,7 @@ body.theme-dark {
 	--drx-color-pink-2: #FF79C6;
 	--drx-color-pink-3: #E660AD;
 
-	--bold-color: var(--drx-color-accent);
+	--bold-color: inherit;
 	--text-selection: color-mix(in srgb, var(--drx-color-accent), transparent 70%);
 	--mono-rgb-100: 127, 140, 187 !important;
 
@@ -238,58 +242,43 @@ body.theme-dark {
 		background-color: var(--drx-color-surface) !important;
 	}
 
-	/* Callouts styling */
-	.cm-callout, .markdown-rendered .callout {
+	/* Fenced code block rounding */
+	.markdown-rendered pre {
 		border-radius: var(--drx-border-radius-inner) !important;
+	}
+
+	.cm-s-obsidian div.HyperMD-codeblock-begin-bg {
+		border-top-left-radius: var(--drx-border-radius-inner) !important;
+		border-top-right-radius: var(--drx-border-radius-inner) !important;
+	}
+
+	.cm-s-obsidian div.HyperMD-codeblock-end-bg {
+		border-bottom-left-radius: var(--drx-border-radius-inner) !important;
+		border-bottom-right-radius: var(--drx-border-radius-inner) !important;
+	}
+
+	/* Callouts styling */
+	.callout {
+		border-radius: var(--drx-border-radius-inner) !important;
+		border: 1px solid color-mix(in srgb, rgb(var(--callout-color)), white 20%) !important;
+		background-color: rgba(var(--callout-color), 0.1) !important;
+		--bold-color: color-mix(in srgb, rgb(var(--callout-color)), white 35%) !important;
+		overflow: hidden;
+		background-clip: padding-box;
 	}
 
 	.callout-title {
 		font-weight: 500;
+		color: color-mix(in srgb, rgb(var(--callout-color)), white 35%) !important;
+	}
+
+	.callout-icon {
+		color: color-mix(in srgb, rgb(var(--callout-color)), white 35%) !important;
 	}
 
 	.callout a {
 		font-weight: 500;
-	}
-
-	.callout[data-callout="todo"] {
-		--bold-color: var(--drx-color-text);
-		background: var(--drx-color-red-2) !important;
-		a { color: var(--drx-color-text) !important; }
-	}
-
-	.callout[data-callout="important"] {
-		--bold-color: var(--drx-color-purple-2);
-		a { color: var(--drx-color-purple-2) !important; }
-	}
-
-	.callout[data-callout="example"] {
-		--bold-color: var(--drx-color-pink-2);
-		a { color: var(--drx-color-pink-2) !important; }
-	}
-
-	.callout[data-callout="tldr"], .callout[data-callout="summary"], .callout[data-callout="tip"] {
-		--bold-color: var(--drx-color-cyan-2);
-		a { color: var(--drx-color-cyan-2) !important; }
-	}
-
-	.callout[data-callout="bug"], .callout[data-callout="error"], .callout[data-callout="fail"] {
-		--bold-color: var(--drx-color-red-2);
-		a { color: var(--drx-color-red-2) !important; }
-	}
-
-	.callout[data-callout="quote"] {
-		--bold-color: var(--drx-color-purple-2);
-		a { color: var(--drx-color-purple-2) !important; }
-	}
-
-	.callout[data-callout="success"] {
-		--bold-color: var(--drx-color-green-2);
-		a { color: var(--drx-color-green-2) !important; }
-	}
-
-	.callout[data-callout="question"], .callout[data-callout="warning"] {
-		--bold-color: var(--drx-color-orange-2);
-		a { color: var(--drx-color-orange-2) !important; }
+		color: color-mix(in srgb, rgb(var(--callout-color)), white 35%) !important;
 	}
 }
 
@@ -337,7 +326,7 @@ body.theme-light {
 	--drx-color-pink-2: #A3144D;
 	--drx-color-pink-3: #82103E;
 
-	--bold-color: var(--drx-color-accent);
+	--bold-color: inherit;
 	--text-selection: color-mix(in srgb, var(--drx-color-accent), transparent 70%);
 
 	--color-base-00: var(--drx-color-base);
@@ -410,7 +399,7 @@ body.theme-light {
 	}
 
 	/* Fixes the title bar color issue in light mode */
-	.workspace-tab-header-container, 
+	.workspace-tab-header-container,
 	.titlebar-button {
 		background-color: var(--drx-color-base);
 	}
@@ -460,20 +449,19 @@ body.theme-light {
 	}
 
 	/* Callouts styling */
-	.cm-callout, .markdown-rendered .callout {
-		border-radius: var(--drx-border-radius-inner) !important;
-		border: solid 1px var(--drx-color-highlight);
-		box-shadow: 0 0.25rem 0.5rem #CECCC0B6;
-	}
-
-	.cm-callout:hover, .markdown-rendered .callout:hover {
-		border-radius: var(--drx-border-radius-inner) !important;
-		box-shadow: 0 0.25rem 0.5rem var(--drx-color-base) !important;
-	}
-
 	.callout {
+		border-radius: var(--drx-border-radius-inner) !important;
+		border: solid 1px var(--drx-color-highlight) !important;
+		box-shadow: 0 0.25rem 0.5rem #CECCC0B6;
 		padding: 0px;
 		background: #6272A43F !important;
+		overflow: hidden;
+		background-clip: padding-box;
+	}
+
+	.callout:hover {
+		border-radius: var(--drx-border-radius-inner) !important;
+		box-shadow: 0 0.25rem 0.5rem var(--drx-color-base) !important;
 	}
 
 	.callout-title {
@@ -495,90 +483,175 @@ body.theme-light {
 	.callout[data-callout="todo"] {
 		background: var(--drx-color-red-2) !important;
 		color: white !important;
-		.callout-content { color: var(--drx-color-text) !important; }
+
+		.callout-content {
+			color: var(--drx-color-text) !important;
+		}
+
 		--bold-color: var(--drx-color-text);
-		a { color: white !important; }
+
+		a {
+			color: white !important;
+		}
 	}
 
-	.callout[data-callout="important"], .callout[data-callout="example"] {
+	.callout[data-callout="important"],
+	.callout[data-callout="example"] {
 		background: #A3144D4F !important;
-		.callout-title, .callout-icon .svg-icon { color: var(--drx-color-pink-2); }
+
+		.callout-title,
+		.callout-icon .svg-icon {
+			color: var(--drx-color-pink-2);
+		}
+
 		--bold-color: var(--drx-color-pink-2);
-		a { color: var(--drx-color-pink-2) !important; }
+
+		a {
+			color: var(--drx-color-pink-2) !important;
+		}
 	}
 
-	.callout[data-callout="summary"], .callout[data-callout="tldr"], .callout[data-callout="tip"] {
+	.callout[data-callout="summary"],
+	.callout[data-callout="tldr"],
+	.callout[data-callout="tip"] {
 		background: #036A964F !important;
-		.callout-title, .callout-icon .svg-icon { color: var(--drx-color-blue-2); }
+
+		.callout-title,
+		.callout-icon .svg-icon {
+			color: var(--drx-color-blue-2);
+		}
+
 		--bold-color: var(--drx-color-blue-2);
-		a { color: var(--drx-color-blue-2) !important; }
+
+		a {
+			color: var(--drx-color-blue-2) !important;
+		}
 	}
 
-	.callout[data-callout="bug"], .callout[data-callout="error"], .callout[data-callout="fail"] {
+	.callout[data-callout="bug"],
+	.callout[data-callout="error"],
+	.callout[data-callout="fail"] {
 		background: #A3144D4F !important;
-		.callout-title, .callout-icon .svg-icon { color: var(--drx-color-red-2); }
+
+		.callout-title,
+		.callout-icon .svg-icon {
+			color: var(--drx-color-red-2);
+		}
+
 		--bold-color: var(--drx-color-red-2);
-		a { color: var(--drx-color-red-2) !important; }
+
+		a {
+			color: var(--drx-color-red-2) !important;
+		}
 	}
 
 	.callout[data-callout="quote"] {
 		background: #644AC94F !important;
-		.callout-title, .callout-icon .svg-icon { color: var(--drx-color-purple-2); }
+
+		.callout-title,
+		.callout-icon .svg-icon {
+			color: var(--drx-color-purple-2);
+		}
+
 		--bold-color: var(--drx-color-purple-2);
-		a { color: var(--drx-color-purple-2) !important; }
+
+		a {
+			color: var(--drx-color-purple-2) !important;
+		}
 	}
 
 	.callout[data-callout="success"] {
 		background: #14710A4F !important;
-		.callout-title, .callout-icon .svg-icon { color: var(--drx-color-green-2); }
+
+		.callout-title,
+		.callout-icon .svg-icon {
+			color: var(--drx-color-green-2);
+		}
+
 		--bold-color: var(--drx-color-green-2);
-		a { color: var(--drx-color-green-2) !important; }
+
+		a {
+			color: var(--drx-color-green-2) !important;
+		}
 	}
 
-	.callout[data-callout="question"], .callout[data-callout="warning"] {
+	.callout[data-callout="question"],
+	.callout[data-callout="warning"] {
 		background: #AF3A034F !important;
-		.callout-title, .callout-icon .svg-icon { color: var(--drx-color-orange-2); }
+
+		.callout-title,
+		.callout-icon .svg-icon {
+			color: var(--drx-color-orange-2);
+		}
+
 		--bold-color: var(--drx-color-orange-2);
-		a { color: var(--drx-color-orange-2) !important; }
+
+		a {
+			color: var(--drx-color-orange-2) !important;
+		}
 	}
 }
 
 /* ========================== GENERAL STYLING ======================== */
 
 /* General link styling */
-a { color: var(--drx-color-accent) !important; }
+a {
+	color: var(--drx-color-accent) !important;
+}
 
-a:hover { color: var(--drx-color-important) !important; }
+a:hover {
+	color: var(--drx-color-important) !important;
+}
 
-/* Explicit H1 font size */
-.markdown-rendered h1[align="center"], h1 {
-	font-size: 2em;
+/* Explicit H1 font size for centered title (Document Title) */
+h1[align="center"],
+.markdown-rendered h1[align="center"] {
+	font-size: 2.4em;
+	font-weight: 800;
+	margin-top: 1em !important;
+	margin-bottom: 1.5em !important;
+	line-height: 1.2;
+	text-align: center;
 }
 
 /* Rounds the corners of all panels */
-.workspace-tab-container, .prompt {
+.workspace-tab-container,
+.prompt {
 	margin: 10px;
 	border-radius: var(--drx-border-radius-outer);
 }
 
 /* Margins to visually group headers with their content */
-.markdown-rendered h1,
+.markdown-rendered h1:not([align="center"]),
 .markdown-rendered h2,
-.markdown-rendered h3 {
-    margin-top: 2em !important;
-    margin-bottom: 0.5em !important;
+.markdown-rendered h3,
+.HyperMD-header-1,
+.HyperMD-header-2,
+.HyperMD-header-3 {
+	margin-top: 1.8em !important;
+	margin-bottom: 0.5em !important;
 }
 
 /* Styles header 1 in markdown with an underline (Live Preview & Reading Mode) */
 .HyperMD-header-1,
 .markdown-rendered h1:not([align="center"]) {
-	border-bottom: 3px solid;
-	border-color: var(--drx-color-accent);
-	padding-bottom: 0.3em !important;
+	border-bottom: 1.5px solid var(--hr-color);
+	padding-bottom: 0.25em !important;
+}
+
+/* Custom styling for horizontal rules (---) */
+.markdown-rendered hr,
+.hr.cm-line hr,
+.cm-hr {
+	width: 30% !important;
+	margin: 3.5rem auto !important;
+	border: none !important;
+	border-top: var(--hr-thickness) solid var(--hr-color) !important;
+	opacity: 0.6;
 }
 
 /* Styles inline code blocks in markdown (text between ```) */
-.cm-s-obsidian span.cm-inline-code  {
+.cm-s-obsidian span.cm-inline-code {
 	color: var(--drx-color-subtext);
 }
 
@@ -653,7 +726,9 @@ body:not(.table-width-obsidian-default) :is(.markdown-rendered, .markdown-source
 
 /* Dropdowns and comboboxes styling */
 button:not(.clickable-icon),
-select, .combobox-button, .dropdown {
+select,
+.combobox-button,
+.dropdown {
 	box-shadow: none;
 	border-radius: var(--drx-border-radius-inner);
 }
@@ -664,12 +739,12 @@ button:not(.clickable-icon):hover {
 }
 
 button.mod-cta {
-	color: var(--drx-color-text) !important; 
+	color: var(--drx-color-text) !important;
 }
 
 /* Kanban plugin global fixes */
-.kanban-plugin__lane-header-wrapper, 
-.kanban-plugin__scroll-container.kanban-plugin__vertical, 
+.kanban-plugin__lane-header-wrapper,
+.kanban-plugin__scroll-container.kanban-plugin__vertical,
 .kanban-plugin__item-button-wrapper {
 	border: none;
 }
@@ -690,7 +765,7 @@ button.mod-cta {
 
 /* Active tab view header transparency */
 .workspace-leaf.mod-active .view-header,
-.is-focused .workspace-leaf.mod-active .view-header{
+.is-focused .workspace-leaf.mod-active .view-header {
 	background: transparent;
 }
 
@@ -703,19 +778,30 @@ button.mod-cta {
 	position: unset;
 }
 
+/* Checklist spacing adjustments */
+.markdown-rendered .task-list-item {
+	margin-bottom: 0.5em !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-contentContainer>.cm-content .cm-line.HyperMD-task-line {
+	padding-top: 0.25em !important;
+	padding-bottom: 0.25em !important;
+}
+
 /* ============================ PRINTING ============================= */
 
 @media print {
 
-	.internal-embed{
-		margin-left:-30px;
+	.internal-embed {
+		margin-left: -30px;
 	}
 
 	h2, h3, h4, h5, h6 {
 		page-break-after: avoid;
 	}
 
-	pre, blockquote {
+	pre,
+	blockquote {
 		page-break-inside: avoid;
 	}
 
@@ -737,8 +823,8 @@ button.mod-cta {
 
 /* Left aligned images based on alt text */
 img[alt*="left"] {
-	float:left;
-	clear:left;
+	float: left;
+	clear: left;
 	margin-right: 2rem;
 	margin-bottom: 4px;
 	margin-top: 4px;
@@ -746,16 +832,17 @@ img[alt*="left"] {
 
 /* Right aligned images based on alt text */
 img[alt*="right"] {
-	float:right;
-	clear:right;
+	float: right;
+	clear: right;
 	margin-left: 1rem;
 	margin-bottom: 4px;
 	margin-top: 4px;
 }
 
 /* Center aligned images based on alt text */
-img[alt*="center"],img[alt*="centre"] {
-	display:block;
+img[alt*="center"],
+img[alt*="centre"] {
+	display: block;
 	margin-right: auto;
 	margin-left: auto;
 	margin-bottom: 4px;
